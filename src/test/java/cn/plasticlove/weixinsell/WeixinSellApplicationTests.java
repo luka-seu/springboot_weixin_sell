@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class WeixinSellApplicationTests {
 
     @Test
-    public void contextLoads() {
+    public void testProductCategory() {
     }
 
 }
