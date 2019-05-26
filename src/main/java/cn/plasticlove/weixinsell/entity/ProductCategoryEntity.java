@@ -13,7 +13,7 @@ public class ProductCategoryEntity {
     /**
      * category id
      */
-    private int categoryId;
+    private Integer categoryId;
     /**
      * category name
      */
@@ -21,9 +21,22 @@ public class ProductCategoryEntity {
     /**
      * category type
      */
-    private int categoryType;
+    private Integer categoryType;
+
+    /**
+     * define for mybatis <selectKey></selectKey>
+     */
+    private Integer count;
 
 
     private Date createTime;
     private Date updateTime;
+
+    public ProductCategoryEntity(String categoryName, int categoryType) {
+        this.categoryName = categoryName;
+        this.categoryType = categoryType;
+    }
+
+    public ProductCategoryEntity() {
+    }
 }

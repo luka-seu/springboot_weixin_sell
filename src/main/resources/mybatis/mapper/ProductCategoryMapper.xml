@@ -5,11 +5,51 @@
     <sql id="base_column">
         category_id, category_name, category_type, create_time, update_time
     </sql>
+
+
+    <insert id="saveProductCategory">
+        <selectKey keyProperty="count" resultType="int" order="BEFORE">
+            select count(*) from product_category where category_type = #{categoryType}
+        </selectKey>
+        <if test="count > 0">
+            update product_category
+            <set>
+                <if test="categoryName!= null" >
+                    category_name= #{categoryName},
+                </if>
+                <if test="categoryType!= null" >
+                    category_type= #{categoryType},
+                </if>
+
+            </set>
+            <where>
+                category_type = #{categoryType}
+            </where>
+        </if>
+        <if test="count==0">
+            insert into product_category(category_name,category_type) values (#{categoryName},#{categoryType})
+        </if>
+    </insert>
+
+
+
     <!--select ProductCategoryEntity by id-->
     <select id="getCategoryById" resultType="cn.plasticlove.weixinsell.entity.ProductCategoryEntity">
         select
         <include refid="base_column"></include>
         from product_category
         where category_id = #{categoryId}
+    </select>
+    <!--select product categorylist in typelist-->
+    <select id="listProductCategoryInTypeList"
+            resultType="cn.plasticlove.weixinsell.entity.ProductCategoryEntity">
+        select
+        <include refid="base_column"></include>
+        from product_category
+        where category_type in
+        /*use in mybatis must use foreach*/
+        <foreach collection="typeList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 </mapper>
