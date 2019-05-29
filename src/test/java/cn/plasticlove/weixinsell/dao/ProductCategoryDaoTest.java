@@ -16,26 +16,11 @@ import java.util.List;
 @SpringBootTest
 public class ProductCategoryDaoTest {
     @Autowired
-    private ProductCategoryDao productCategoryDao;
+    private ProductCategoryEntityMapper productCategoryDao;
     @Test
     public void getCategoryById() {
-        ProductCategoryEntity category = productCategoryDao.getCategoryById(1);
+        ProductCategoryEntity category = productCategoryDao.selectByPrimaryKey(1);
         System.out.println(category);
     }
 
-    @Test
-    public void listProductCategoryInTypeList() {
-        List<Integer> list = Arrays.asList(1,2,3,4);
-        List<ProductCategoryEntity> categoryList = productCategoryDao.listProductCategoryInTypeList(list);
-        for (ProductCategoryEntity productCategory:categoryList){
-            System.out.println(productCategory);
-        }
-    }
-
-    @Test
-    public void saveProductCategory() {
-        ProductCategoryEntity category = new ProductCategoryEntity("nanjing",3);
-        productCategoryDao.saveProductCategory(category);
-
-    }
 }
