@@ -2,8 +2,11 @@ package cn.plasticlove.weixinsell.dao;
 
 import cn.plasticlove.weixinsell.entity.ProductInfoEntity;
 
+import java.util.List;
+
 /**
  * The interface Product info entity mapper.
+ * @author Luka
  */
 public interface ProductInfoEntityMapper {
     /**
@@ -59,4 +62,11 @@ public interface ProductInfoEntityMapper {
      * @return the int
      */
     int updateByPrimaryKey(ProductInfoEntity record);
+
+    /**
+     * List product list.
+     *
+     * @return the list
+     */
+    List<ProductInfoEntity> listProduct();
 }

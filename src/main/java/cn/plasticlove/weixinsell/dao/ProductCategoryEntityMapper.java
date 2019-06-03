@@ -2,6 +2,8 @@ package cn.plasticlove.weixinsell.dao;
 
 import cn.plasticlove.weixinsell.entity.ProductCategoryEntity;
 
+import java.util.List;
+
 /**
  * The interface Product category entity mapper.
  */
